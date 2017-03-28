@@ -1,1 +1,150 @@
-hello
+<html>
+<head>
+    <script type="text/javascript" src="./res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./res/js/setup.min.js"></script>
+    <script type="text/javascript" src="./res/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./res/js/flipclock.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="./res/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="./res/css/flipclock.css"/>
+    <link type="text/css" rel="stylesheet" href="./res/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="./res/css/bootstrap-theme.css"/>
+</head>
+
+<body onload="bodyLoad()">
+<div>
+    <!-- Success modal -->
+    <div class="modal fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="successModalLabel">Success!</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="dialog-code"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Failure modal -->
+    <div class="modal fade" id="fail_modal" tabindex="-1" role="dialog" aria-labelledby="failModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="failModalLabel">Failure!</h4>
+                </div>
+                <div class="modal-body">
+                    Code expired!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="background-image">
+    </div>
+
+    <header class="header">
+        <div class="clock">
+        </div>
+    </header>
+
+
+    <!--<h1>codeSettings</h1>-->
+    <div>
+        <table id="properties">
+            <tr id="properties-header">
+                <td>codeSettings</td>
+                <td id="code-initialised-status">waiting...</td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="code_length">length</label>
+                </td>
+                <td>
+                    <select id="code_length" class="form-control">
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="time">totalTime</label>
+                </td>
+                <td>
+                    <select id="time" class="form-control">
+                        <option value="30">30 seconds</option>
+                        <option value="40">40 seconds</option>
+                        <option value="50">50 seconds</option>
+                        <option value="60" selected>60 seconds</option>
+                        <option value="70">70 seconds</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="time_loss">secondLossPerFailedTry</label>
+                </td>
+                <td>
+                    <select id="time_loss" class="form-control">
+                        <option value="3">3 seconds</option>
+                        <option value="4">4 seconds</option>
+                        <option value="5" selected>5 seconds</option>
+                        <option value="6">6 seconds</option>
+                        <option value="7">7 seconds</option>
+                        <option value="8">8 seconds</option>
+                        <option value="9">9 seconds</option>
+                        <option value="10">10 seconds</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button id="init_button" onclick="initialiseCodeParameters()" class="btn btn-warning">INIT</button>
+    </div>
+
+    <form action="crack.html" method="post">
+
+
+        <table id="keypad" cellpadding="5" cellspacing="3">
+            <tr>
+                <td onclick="updateCode('1');">1</td>
+                <td onclick="updateCode('2');">2</td>
+                <td onclick="updateCode('3');">3</td>
+            </tr>
+            <tr>
+                <td onclick="updateCode('4');">4</td>
+                <td onclick="updateCode('5');">5</td>
+                <td onclick="updateCode('6');">6</td>
+            </tr>
+            <tr>
+                <td onclick="updateCode('7');">7</td>
+                <td onclick="updateCode('8');">8</td>
+                <td onclick="updateCode('9');">9</td>
+            </tr>
+            <tr>
+                <td onclick="updateCode('*');">*</td>
+                <td onclick="updateCode('0');">0</td>
+                <td onclick="updateCode('#');">#</td>
+            </tr>
+        </table>
+
+        <input id="code_input" type="text" name="code" value="" maxlength="4" class="display"
+               readonly="readonly"/>
+    </form>
+
+    <button id="setup_button" onclick="setupCode()" class="btn btn-primary" disabled>SETUP</button>
+    <button id="verify_button" onclick="verifyCode()" class="btn btn-danger" disabled>VERIFY</button>
+
+    <table id="results" cellpadding="5" cellspacing="3">
+
+    </table>
+</div>
+</body>
+</html>

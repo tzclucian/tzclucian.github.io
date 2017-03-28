@@ -4,13 +4,13 @@ body {
 }
 
 #background-image {
-  background-image: url("../img/circuit.jpg");
+  background-image: url("../img/lion_black_logo.png");
   background-size: 10%;
   width: 100%;
   height:100%;
   top: 0;
   left: 0;
-  opacity: 0.5;
+  opacity: 0.1;
   position: fixed;
   background-repeat-x: repeat;
   background-repeat-y: repeat;
@@ -107,14 +107,17 @@ tr#properties-header td {
 
 table#results tr td.correct {
     background-color: limegreen;
+    color: black;
 }
 
 table#results tr td.wrong  {
     background-color: red !important;
+    color: black;
 }
 
 table#results tr td.misplaced {
     background-color: yellow;
+    color: black;
 }
 
 table#results tr td.index {

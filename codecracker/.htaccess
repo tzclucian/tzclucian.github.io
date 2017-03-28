@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Aufgaben"
-AuthUserFile .htpasswds
-require valid-user

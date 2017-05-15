@@ -32,7 +32,7 @@
                // The Alfresco Auth Return webscript expects the access token as a query string parameter, not as a URL fragment.
                var accessToken = window.location.search.split("code=");
                   url = decodeURIComponent(authCallbackUrl);
-               statusEl.innerHTML = "Your authorization has been received.<br /> You are being redirected back to Alfresco to finish processing the authorization.";
+               statusEl.innerHTML = "Your authorization has been received. &lt;br/&lt; You are being redirected back to Alfresco to finish processing the authorization.";
                // Use a client side redirect to send the user there. That page should sort everything out and close itself, if possible.
                window.location = url + "googledocs/completeauth?access_token=" + accessToken[1];
             }
